@@ -16,105 +16,106 @@
     <h1>Welcome to the FriendFinder Survey!</h1>
     <h2>Please fill in all fields</h2>
 
-    <p>Your name: </p>
-    <input type="text" id="name" required>
+    <form action="/api/friends" method="POST">
+        <p>Your name: </p>
+        <input type="text" id="name" required>
 
-    <p>Photo URL: </p>
-    <input type="text" id="name" required>
+        <p>Photo URL: </p>
+        <input type="text" id="name" required>
 
-    <p>Do you consider yourself adventurous?</p>
-    <select class="answer" id="question1">
-        <option value=""></option>
-        <option value="1">1 (Not really)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Very adventurous)</option>
-    </select>
-    <p>When you make plans with a friend how often do cancel them?</p>
-    <select class="answer" id="question2">
-        <option value=""></option>
-        <option value="1">1 (Almost never)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Regularly)</option>
-    </select>
-    <p>How often do enjoy spending time with your friends? </p>
-    <select class="answer" id="question3">
-        <option value=""></option>
-        <option value="1">1 (Almost never)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (All the time)</option>
-    </select>
-    <p>How often do you get upset?</p>
-    <select class="answer" id="question4">
-        <option value=""></option>
-        <option value="1">1 (Almost never)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Regularly)</option>
-    </select>
-    <p>How well do you relate to other people’s feelings?</p>
-    <select class="answer" id="question5">
-        <option value=""></option>
-        <option value="1">1 (Not at all)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (I am empathetic)</option>
-    </select>
-    <p>Which do you think is more important? The truth or people’s feelings?</p>
-    <select class="answer" id="question6">
-        <option value=""></option>
-        <option value="1">1 (Feelings)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Truth)</option>
-    </select>
-    <p>How well do you keep your cool when under pressure or stress?</p>
-    <select class="answer" id="question7">
-        <option value=""></option>
-        <option value="1">1 (I freak out easily)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Calm and Cool)</option>
-    </select>
-    <p>Which would you rather do? A hobby you know you enjoy or something you have never tried before?</p>
-    <select class="answer" id="question8">
-        <option value=""></option>
-        <option value="1">1 (Try something new)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (A hobby I know)</option>
-    </select>
-    <p>Do you consider yourself more of an introvert or an extrovert?</p>
-    <select class="answer" id="question9">
-        <option value=""></option>
-        <option value="1">1 (Introvert)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Extrovert)</option>
-    </select>
-    <p>Do you like to tell dirty or offensive jokes or do you prefer clean humor that doesn’t offend anybody?</p>
-    <select class="answer" id="question10">
-        <option value=""></option>
-        <option value="1">1 (Clean humor)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Dirty and offensive)</option>
-    </select>
-    <br><br><br>
-    <input type="submit" class="btn-primary" value="Send Request">
-
+        <p>Do you consider yourself adventurous?</p>
+        <select class="answer" id="question1">
+            <option value=""></option>
+            <option value="1">1 (Not really)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Very adventurous)</option>
+        </select>
+        <p>When you make plans with a friend how often do cancel them?</p>
+        <select class="answer" id="question2">
+            <option value=""></option>
+            <option value="1">1 (Almost never)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Regularly)</option>
+        </select>
+        <p>How often do enjoy spending time with your friends? </p>
+        <select class="answer" id="question3">
+            <option value=""></option>
+            <option value="1">1 (Almost never)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (All the time)</option>
+        </select>
+        <p>How often do you get upset?</p>
+        <select class="answer" id="question4">
+            <option value=""></option>
+            <option value="1">1 (Almost never)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Regularly)</option>
+        </select>
+        <p>How well do you relate to other people’s feelings?</p>
+        <select class="answer" id="question5">
+            <option value=""></option>
+            <option value="1">1 (Not at all)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (I am empathetic)</option>
+        </select>
+        <p>Which do you think is more important? The truth or people’s feelings?</p>
+        <select class="answer" id="question6">
+            <option value=""></option>
+            <option value="1">1 (Feelings)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Truth)</option>
+        </select>
+        <p>How well do you keep your cool when under pressure or stress?</p>
+        <select class="answer" id="question7">
+            <option value=""></option>
+            <option value="1">1 (I freak out easily)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Calm and Cool)</option>
+        </select>
+        <p>Which would you rather do? A hobby you know you enjoy or something you have never tried before?</p>
+        <select class="answer" id="question8">
+            <option value=""></option>
+            <option value="1">1 (Try something new)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (A hobby I know)</option>
+        </select>
+        <p>Do you consider yourself more of an introvert or an extrovert?</p>
+        <select class="answer" id="question9">
+            <option value=""></option>
+            <option value="1">1 (Introvert)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Extrovert)</option>
+        </select>
+        <p>Do you like to tell dirty or offensive jokes or do you prefer clean humor that doesn’t offend anybody?</p>
+        <select class="answer" id="question10">
+            <option value=""></option>
+            <option value="1">1 (Clean humor)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Dirty and offensive)</option>
+        </select>
+        <br><br><br>
+        <input type="submit" class="btn-primary" >
+    </form>
     <script src="./css/bootstrap/js/bootstrap.min.js"></script>
     <script src="../jquery-3.3.1.min.js"></script>
     <script>
