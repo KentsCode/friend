@@ -16,7 +16,7 @@
             <h1>FriendFinder!</h1> 
             <p>A fun way to see who you match best with!</p> 
           </div>
-          <button type="button" id="to-survey">Take the survey</button>
+          <button type="button" id="to-survey" onclick="window.location.href='/survey'">Take the survey</button>
           <a href="/api/friends">Friends List API data.</a>           
       </div>
 
@@ -24,11 +24,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="./css/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="./css/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script>
-      $("#to-survey").onclick(function() {
-        
-      })
+      /*$("#to-survey").on("click", function() {
+        console.log("button!")
+      })*/
     </script>
   </body>
 </html>

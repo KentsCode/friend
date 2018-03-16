@@ -21,7 +21,7 @@
         <input type="text" id="name" required>
 
         <p>Photo URL: </p>
-        <input type="text" id="name" required>
+        <input type="text" id="photo-url" required>
 
         <p>Do you consider yourself adventurous?</p>
         <select class="answer" id="question1">
@@ -114,12 +114,44 @@
             <option value="5">5 (Dirty and offensive)</option>
         </select>
         <br><br><br>
-        <input type="submit" class="btn-primary" >
+        <button type="button" class="btn-primary" id="submit-button">Find Friends!</button>
     </form>
-    <script src="./css/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../jquery-3.3.1.min.js"></script>
+    <!-- <script src="./css/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="./css/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script>
         
+        $("#submit-button").on("click", function formDataToJSON(){
+            //event.preventDefault();
+            console.log("clicked");
+            var answerArray = [];
+            
+            for (i = 1; i < 11; i++) {
+                var questionName = "question" + i;
+                answerArray.push($("#"+questionName).val());
+            }
+            var objectBuilder = {
+                name: $("#name").val(),
+                photo: $("#photo-url").val(),
+                answers: answerArray
+            }
+            objectBuilder = JSON.stringify(objectBuilder);
+            console.log(objectBuilder);            
+            ajaxCall(objectBuilder);
+            })
+
+
+            function ajaxCall (objectBuilder) {
+                console.log("ajax start!    " + objectBuilder)
+                $.post( "/api/friends", objectBuilder, function(data) {
+                     console.log(data);
+                     console.log(objectBuilder);
+                }).fail(function(xhr, status, error) {
+                    console.log(error);
+                    console.log(objectBuilder);
+                    console.log(status);
+                    //console.log(xhr);
+                })
+            }
     </script>
 </body>
 </html>
