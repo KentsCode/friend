@@ -1,14 +1,4 @@
-var express = require("express");
-const app = express();
-var fs = require('fs');
-
 var friends = require("../data/friends.js");
-
-const bodyParser = require("body-parser");
-var path = require("path");
-
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
 
 module.exports = function sendFriendsList(app){
     app.get("/api/friends", function(req, res) {
@@ -16,13 +6,14 @@ module.exports = function sendFriendsList(app){
     });
 
     app.post("/api/friends", function(req, res) {
-        res.setHeader('Content-type', 'application/json');
+        //res.setHeader('Content-type', 'application/json');
         console.log(req.body);
+        console.log(JSON.parse(req.body));
         //var currentSub = req.body.scores;
-        var currentHighScore = 0;
+        /*var currentHighScore = 0;
         var currentHighScorer = req.body.name;
         console.log(friends);
-        console.log("length of friends " + friends.length);
+        console.log("length of friends " + friends.length);*/
         /*for (i = 0; i < friends.length; i++) {
             var comparedFriend = friends[i].scores;
             console.log("friend compared " + comparedFriend.length);
@@ -41,12 +32,12 @@ module.exports = function sendFriendsList(app){
                 totalDiffB = 0;
             }
         }*/
-        console.log("highest scorer " + currentHighScorer);
+        //console.log("highest scorer " + currentHighScorer);
         //console.log("highest score " + currentHighScore);
 
         friends.push(req.body);
         
-        console.log(friends[friends.length-1]);
+        //console.log(friends[friends.length]);
 
         res.end("done");
     });

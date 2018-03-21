@@ -120,30 +120,35 @@
     <script>
         
         $("#submit-button").on("click", function formDataToJSON(){
-            console.log("clicked");
             var surveyResult = new Object();
-                console.log(surveyResult);
                 surveyResult.name = $("#name").val().trim();
-                console.log(surveyResult);
                 surveyResult.photo = $("#photo-url").val().trim();
+                surveyResult.scores = [
+                    $("#question1").val(),
+                    $("#question2").val(),
+                    $("#question3").val(),
+                    $("#question4").val(),
+                    $("#question5").val(),
+                    $("#question6").val(),
+                    $("#question7").val(),
+                    $("#question8").val(),
+                    $("#question9").val(),
+                    $("#question10").val(),
+                ];
                 console.log(surveyResult);
-                surveyResult.scores = [];
-                console.log(surveyResult);
-                console.log(Object.keys(surveyResult));
             
-            for (i = 1; i < 11; i++) {
-                var questionName = "question" + i;
-                surveyResult.scores.push($("#"+questionName).val().trim());
-            }
-           
-            //console.log("survey result" + JSON.parse(surveyResult));
+            // for (i = 1; i < 11; i++) {
+            //     var questionName = "question" + i;
+            //     surveyResult.scores.push($("#"+questionName).val().trim());
+            // }
             surveyResult = JSON.stringify(surveyResult);
             console.log(surveyResult);
-            ajaxCall(surveyResult);
+            //ajaxCall(surveyResult);
+            $.post("/api/friends", surveyResult, function(data) {
             });
 
-            function ajaxCall (surveyResult) {
-                console.log("ajax start!    " + JSON.parse(surveyResult));
+            /*function ajaxCall (surveyResult) {
+                console.log("ajax start!    " + surveyResult);
                 
                 $.ajax({
                     type: "POST",
@@ -151,10 +156,9 @@
                     data: surveyResult,
                     dataType: "json"
                 }).then(function(data) {
-                    console.log(data);
-                    
-                });
-            }
+                    console.log(data);    
+                });*/
+            });
     </script>
 </body>
 </html>
