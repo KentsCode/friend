@@ -5,8 +5,6 @@ var fs = require('fs');
 
 const app = express();
 
-require('./routing/htmlRoutes.js')(app);
-require('./routing/apiRoutes.js')(app);
 var friends = require("./data/friends.js");
 app.use(express.static("./public"));
 
@@ -15,10 +13,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 var port = process.env.PORT || 3000;
 
-//app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(bodyParser.json());
-
-
+require('./routing/htmlRoutes.js')(app);
+require('./routing/apiRoutes.js')(app);
 
 app.listen(port, function() {
     console.log("App listening on PORT " + port);

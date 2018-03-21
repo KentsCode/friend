@@ -116,41 +116,44 @@
         <br><br><br>
         <button type="button" class="btn-primary" id="submit-button">Find Friends!</button>
     </form>
-    <!-- <script src="./css/bootstrap/js/bootstrap.min.js"></script> -->
     <script src="./css/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script>
         
         $("#submit-button").on("click", function formDataToJSON(){
-            //event.preventDefault();
             console.log("clicked");
-            var answerArray = [];
+            var surveyResult = new Object();
+                console.log(surveyResult);
+                surveyResult.name = $("#name").val().trim();
+                console.log(surveyResult);
+                surveyResult.photo = $("#photo-url").val().trim();
+                console.log(surveyResult);
+                surveyResult.scores = [];
+                console.log(surveyResult);
+                console.log(Object.keys(surveyResult));
             
             for (i = 1; i < 11; i++) {
                 var questionName = "question" + i;
-                answerArray.push($("#"+questionName).val());
+                surveyResult.scores.push($("#"+questionName).val().trim());
             }
-            var objectBuilder = {
-                name: $("#name").val(),
-                photo: $("#photo-url").val(),
-                answers: answerArray
-            }
-            objectBuilder = JSON.stringify(objectBuilder);
-            console.log(objectBuilder);            
-            ajaxCall(objectBuilder);
-            })
+           
+            //console.log("survey result" + JSON.parse(surveyResult));
+            surveyResult = JSON.stringify(surveyResult);
+            console.log(surveyResult);
+            ajaxCall(surveyResult);
+            });
 
-
-            function ajaxCall (objectBuilder) {
-                console.log("ajax start!    " + objectBuilder)
-                $.post( "/api/friends", objectBuilder, function(data) {
-                     console.log(data);
-                     console.log(objectBuilder);
-                }).fail(function(xhr, status, error) {
-                    console.log(error);
-                    console.log(objectBuilder);
-                    console.log(status);
-                    //console.log(xhr);
-                })
+            function ajaxCall (surveyResult) {
+                console.log("ajax start!    " + JSON.parse(surveyResult));
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/api/friends",
+                    data: surveyResult,
+                    dataType: "json"
+                }).then(function(data) {
+                    console.log(data);
+                    
+                });
             }
     </script>
 </body>
