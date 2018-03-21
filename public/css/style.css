@@ -1,3 +1,13 @@
+body {
+    padding: 35px;
+}
+
+
 #friend-photo {
     height: 250px;
+}
+.col-style {
+}
+h3 {
+    text-align: center;
 }

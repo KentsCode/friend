@@ -32,13 +32,9 @@ module.exports = function sendFriendsList(app){
                 totalDiff = 0;
             }
         }
-        console.log("highest scorer " + currentHighScorer);
-        console.log("highest score " + currentHighScore);
-        console.log(friends[highScorePosition]);
-        res.send(friends[highScorePosition]);
 
+        res.send(friends[highScorePosition]);
         friends.push(currentSub);
-        console.log("END!!!!!!!!!!!!!!!!END!!!!!!!!!!!");
         res.end("done");
     });
 }

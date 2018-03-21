@@ -1,3 +1,4 @@
+//selects which html page to send
 
 module.exports = function directory(app){
     app.get("/survey", function(req, res) {
