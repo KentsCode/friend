@@ -9,7 +9,9 @@
 
   <!-- Bootstrap -->
   <link href="./css/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-
+  <link href="./css/style.css" type="text/css" rel="stylesheet">
+  <script src="./css/bootstrap/js/jquery-3.3.1.min.js"></script>
+  <script src="./css/bootstrap/js/bootstrap.bundle.js" ></script>
 </head>
 
 <body>
@@ -116,14 +118,34 @@
         <br><br><br>
         <button type="button" class="btn-primary" id="submit-button">Find Friends!</button>
     </form>
-    <script src="./css/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <div id="friend-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <img src="" id="friend-photo">
+              <p>Meet your new friend: </p><p id="friend-name"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
     <script>
         
         $("#submit-button").on("click", function formDataToJSON(){
-            var surveyResult = new Object();
-                surveyResult.name = $("#name").val().trim();
-                surveyResult.photo = $("#photo-url").val().trim();
-                surveyResult.scores = [
+            var encodedPhotoUri = encodeURIComponent($("#photo-url").val().trim());
+            var surveyResult = {
+                name : $("#name").val().trim(),
+                photo : encodedPhotoUri,
+                scores : [
                     $("#question1").val(),
                     $("#question2").val(),
                     $("#question3").val(),
@@ -134,31 +156,22 @@
                     $("#question8").val(),
                     $("#question9").val(),
                     $("#question10").val(),
-                ];
+                    ]
+                };
                 console.log(surveyResult);
-            
-            // for (i = 1; i < 11; i++) {
-            //     var questionName = "question" + i;
-            //     surveyResult.scores.push($("#"+questionName).val().trim());
-            // }
+
             surveyResult = JSON.stringify(surveyResult);
             console.log(surveyResult);
-            //ajaxCall(surveyResult);
-            $.post("/api/friends", surveyResult, function(data) {
-            });
 
-            /*function ajaxCall (surveyResult) {
-                console.log("ajax start!    " + surveyResult);
-                
-                $.ajax({
-                    type: "POST",
-                    url: "/api/friends",
-                    data: surveyResult,
-                    dataType: "json"
-                }).then(function(data) {
-                    console.log(data);    
-                });*/
+            $.post("/api/friends", surveyResult, function(data) {
+                $("#friend-name").text(data.name);
+                console.log(data.name);
+                console.log(data.photo);
+                $("#friend-photo").attr("src", data.photo);
+                $("#friend-modal").modal("toggle");
             });
+ 
+        });
     </script>
 </body>
 </html>

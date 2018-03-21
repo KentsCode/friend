@@ -3,18 +3,17 @@ var bodyParser = require("body-parser");
 var path = require("path");
 
 var app = express();
-var port = 3000;
+var PORT = 3000;
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("./public"));
 
 require('./routing/htmlRoutes.js')(app);
 require('./routing/apiRoutes.js')(app);
 
-var friends = require("./data/friends.js");
+//var friends = require("./data/friends.js");
 
-app.use(express.static("./public"));
-
-app.listen(port, function() {
-    console.log("App listening on PORT " + port);
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
 });
